@@ -18,7 +18,7 @@ To run the app first clone the repository and then follow the steps below:
 
 - Install required packages `pip install -r requirements.txt`
 
-- Create a .env file and set the enviroment variables as shown in the .env_example file. (P.S. remove the curly brackets when filling in your personal environment variables)
+- Create a .env file and set the enviroment variables as shown in the **.env_example** file. P.S. remove the curly brackets when filling in your personal environment variables
 
 - Run `flask --app app run --debug` to start the application in debug mode
 
