@@ -35,3 +35,13 @@ def validate_json(schema):
             return func(*args, **kwargs)
         return wrapper
     return decorator
+
+def auth_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        # Basic placeholder for token or session validation
+        auth = request.headers.get('Authorization')
+        if not auth or auth != "Bearer valid_token":
+            return jsonify({"error": "Unauthorized"}), 401
+        return f(*args, **kwargs)
+    return decorated_function
