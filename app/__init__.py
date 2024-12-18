@@ -14,7 +14,9 @@ def create_app(config_class=Config):
     
     # Register blueprints
     from app.api.products import products_blueprint
+    from app.api.users import user_blueprint
 
     app.register_blueprint(products_blueprint)
+    app.register_blueprint(user_blueprint)
     
     return app

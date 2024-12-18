@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flasgger import swag_from
 
 from app.services.product_service import *
-from app.utils.swagger_definitions import *
+from app.swagger_definitions.product_definitions import *
 from app.models.product import Product
 from app.schemas.product_schema import ProductSchema
 #from app.utils.decorators import admin_required

@@ -1,6 +1,5 @@
 from flask import json
 
-
 def test_get_products(client):
     # Act
     response = client.get('/products')
