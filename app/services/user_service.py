@@ -14,7 +14,7 @@ def create_new_user(data):
     new_user = User(
         username=data['username'], 
         email=data['email'],
-        role=data['role']
+        is_admin=data['is_admin']
     )
     new_user.set_password(data['password'])
 
@@ -26,6 +26,7 @@ def create_new_user(data):
 def update_user_by_id(user_id, data):
     user = get_user_by_id(user_id)
 
+    # TODO: Update this to handle password change
     for key, value in data.items():
         setattr(user, key, value)
     

@@ -3,7 +3,7 @@ def test_create_user(client):
         'username': 'testuser',
         'email': 'test@example.com',
         'password': 'securepassword',
-        'role': 'user'
+        'is_admin': False
     }
 
     response = client.post('/users', json=user_data)
@@ -16,7 +16,7 @@ def test_invalid_user_missing_data(client):
     user_data = {
         'email': 'test@example.com', 
         'password': 'short', 
-        'role': 'admin'
+        'is_admin': True
     }
 
     # Test with missing username
@@ -30,14 +30,14 @@ def test_invalid_user_exisitng_email(client):
         'username': 'testuser' ,
         'email': 'test@example.com', 
         'password': 'password1', 
-        'role': 'admin'
+        'is_admin': True
     }
 
     user_data_2 = {
         'username': 'testuser2' ,
         'email': 'test@example.com', 
         'password': 'password2', 
-        'role': 'user'
+        'is_admin': False
     }
 
     client.post('/users', json=user_data_1)
@@ -52,14 +52,14 @@ def test_invalid_user_exisitng_username(client):
         'username': 'testuser' ,
         'email': 'test1@example.com', 
         'password': 'password1', 
-        'role': 'admin'
+        'is_admin': True
     }
 
     user_data_2 = {
         'username': 'testuser' ,
         'email': 'test2@example.com', 
         'password': 'password2', 
-        'role': 'user'
+        'is_admin': False
     }
 
     client.post('/users', json=user_data_1)

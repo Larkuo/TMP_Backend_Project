@@ -9,10 +9,10 @@ class UserSchema(ma.SQLAlchemySchema):
         model = User
 
     id = ma.auto_field()
-    username = ma.Str(required=True, validate=Length(min=3, max=80))
+    username = ma.Str(required=True, validate=Length(min=3, max=100))
     email = ma.Str(required=True, validate=Email())
     password = ma.Str(load_only=True, required=True, validate=Length(min=8))
-    role = ma.Str(required=False, validate=Length(min=3, max=80))
+    is_admin = ma.Str(required=True)
 
     @validates('username')
     def validate_username(self, value):
