@@ -13,10 +13,10 @@ user_schema = UserSchema()
 @swag_from(user_create_definition)
 def create_user():
     data = request.get_json()
-    if not data or not all(key in data for key in ('username', 'email', 'password', 'role')):
+    if not data or not all(key in data for key in ('username', 'email', 'password')):
         return jsonify({'error': 'Invalid input'}), 422
 
-    if get_user_by_username(data['username']) | get_user_by_email(data['email']):
+    if get_user_by_username(data['username']) or get_user_by_email(data['email']):
         return jsonify({'error': 'User already exists'}), 403
 
     new_user = create_new_user(data)

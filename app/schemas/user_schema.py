@@ -12,7 +12,7 @@ class UserSchema(ma.SQLAlchemySchema):
     username = ma.Str(required=True, validate=Length(min=3, max=80))
     email = ma.Str(required=True, validate=Email())
     password = ma.Str(load_only=True, required=True, validate=Length(min=8))
-    role = ma.Str(required=True, validate=Length(min=3, max=80))
+    role = ma.Str(required=False, validate=Length(min=3, max=80))
 
     @validates('username')
     def validate_username(self, value):
