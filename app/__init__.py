@@ -18,5 +18,8 @@ def create_app(config_class=Config):
 
     app.register_blueprint(products_blueprint)
     app.register_blueprint(user_blueprint)
+
+    with app.app_context():
+        db.create_all()
     
     return app
